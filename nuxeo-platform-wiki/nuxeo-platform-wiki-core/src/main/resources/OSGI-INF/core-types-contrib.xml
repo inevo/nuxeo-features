@@ -5,7 +5,7 @@
   <require>org.nuxeo.ecm.core.CoreExtensions</require>
 
   <documentation>
-    Content type definition for Blog and Wiki.
+    Content type definition for Wiki.
 
     @author
     <a href="mailto:eb@nuxeo.com">Eric Barroca</a>
@@ -14,9 +14,6 @@
   <extension target="org.nuxeo.ecm.core.schema.TypeService"
       point="schema">
     <documentation>The core schemas</documentation>
-    <schema name="site" prefix="site" src="schemas/site.xsd"/>
-    <schema name="blogSite" prefix="blog" src="schemas/blog-site.xsd"/>
-    <schema name="blogPost" prefix="bp" src="schemas/blog-post.xsd"/>
     <schema name="wikiSite" prefix="wiki" src="schemas/wiki-site.xsd"/>
     <schema name="wikiPage" prefix="wp" src="schemas/wiki-page.xsd"/>
   </extension>
@@ -24,7 +21,7 @@
   <extension target="org.nuxeo.ecm.core.schema.TypeService"
       point="configuration">
     <documentation>
-      content types definition for blog and wikis
+      content types definition for wikis
     </documentation>
     <configuration>
       <prefetch>
@@ -56,25 +53,6 @@
       <facet name="Indexable"/>
       <facet name="Commentable"/>
       <facet name="Folderish"/>
-    </doctype>
-
-    <doctype name="Blog" extends="Folder">
-      <schema name="common"/>
-      <schema name="dublincore"/>
-      <schema name="site"/>
-      <schema name="blogSite"/>
-      <facet name="Folderish"/>
-    </doctype>
-
-    <doctype name="BlogPost" extends="Document">
-      <schema name="common"/>
-      <schema name="dublincore"/>
-      <schema name="blogPost"/>
-      <schema name="files"/>
-      <facet name="Versionable"/>
-      <facet name="Publishable"/>
-      <facet name="Indexable"/>
-      <facet name="Commentable"/>
     </doctype>
   </extension>
 

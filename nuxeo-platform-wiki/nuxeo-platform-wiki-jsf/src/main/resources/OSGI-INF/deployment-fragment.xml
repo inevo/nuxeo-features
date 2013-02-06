@@ -1,10 +1,21 @@
 <?xml version="1.0"?>
 
 <fragment version="1">
-    <install>
-      <!--  Unzip the war template -->
-      <unzip from="${bundle.fileName}" to="/" prefix="web">
-        <include>web/nuxeo.war/**</include>
-      </unzip>
-    </install>
+  <require>org.nuxeo.ecm.platform.lang</require>
+          
+  <install>
+    <mkdir path="${bundle.fileName}.tmp"/>
+    <unzip from="${bundle.fileName}" to="${bundle.fileName}.tmp"/>
+    <append from="${bundle.fileName}.tmp/i18n/messages.properties"
+            to="nuxeo.war/WEB-INF/classes/messages.properties" addNewLine="true"/>
+    <append from="${bundle.fileName}.tmp/i18n/messages_fr.properties"
+            to="nuxeo.war/WEB-INF/classes/messages_pt.properties" addNewLine="true"/>
+    <delete path="${bundle.fileName}.tmp"/>
+
+    <!--  Unzip the war template -->
+    <unzip from="${bundle.fileName}" to="/" prefix="web">
+      <include>web/nuxeo.war/**</include>
+    </unzip>
+  </install>
+  
 </fragment>

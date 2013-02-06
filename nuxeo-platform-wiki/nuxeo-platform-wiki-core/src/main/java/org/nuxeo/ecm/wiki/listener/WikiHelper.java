@@ -19,40 +19,31 @@
 
 package org.nuxeo.ecm.wiki.listener;
 
-import static org.nuxeo.ecm.wiki.rendering.WikiPageLinkResolver.PAGE_LINK_PATTERN;
+import static org.nuxeo.ecm.wiki.rendering.WikiConstants.PAGE_LINK_PATTERN;
+import static org.nuxeo.ecm.wiki.rendering.WikiConstants.HAS_LINK_TO;
 
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 
 import org.nuxeo.common.utils.Path;
 import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.DocumentModel;
-import org.nuxeo.ecm.core.api.DocumentModelList;
-import org.nuxeo.ecm.core.api.model.PropertyException;
 import org.nuxeo.ecm.core.api.model.PropertyNotFoundException;
-import org.nuxeo.ecm.core.rest.DocumentObject;
 import org.nuxeo.ecm.platform.relations.api.Graph;
 import org.nuxeo.ecm.platform.relations.api.QNameResource;
 import org.nuxeo.ecm.platform.relations.api.RelationManager;
-import org.nuxeo.ecm.platform.relations.api.Resource;
 import org.nuxeo.ecm.platform.relations.api.Statement;
 import org.nuxeo.ecm.platform.relations.api.impl.LiteralImpl;
-import org.nuxeo.ecm.platform.relations.api.impl.ResourceImpl;
 import org.nuxeo.ecm.platform.relations.api.impl.StatementImpl;
 import org.nuxeo.ecm.platform.relations.api.util.RelationConstants;
 import org.nuxeo.ecm.platform.relations.api.util.RelationHelper;
-import org.nuxeo.ecm.webengine.model.WebContext;
 import org.nuxeo.ecm.wiki.WikiTypes;
 import org.wikimodel.wem.WikiParserException;
 import org.wikimodel.wem.common.CommonWikiParser;
 
 public class WikiHelper {
-
-    public static final Resource HAS_LINK_TO = new ResourceImpl("http://www.nuxeo.org/wiki/hasLinkTo");
 
     // Utility class.
     private WikiHelper() {
@@ -132,41 +123,6 @@ public class WikiHelper {
         Path path = doc.getPath().removeFirstSegments(3);
         path = path.removeLastSegments(1);
         return "." + path.toString().replace("/", ".") + "." + relativeLink;
-    }
-
-    public static List<Map<String, String>> getLinks(WebContext ctx) {
-        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-        DocumentModel doc = null;
-        org.nuxeo.ecm.webengine.model.Resource resource = ctx.getTargetObject();
-        if (resource instanceof DocumentObject) {
-            DocumentObject docObj = (DocumentObject) resource;
-            doc = docObj.getDocument();
-        }
-        if (doc == null) {
-            return list;
-        }
-
-        DocumentModelList l = RelationHelper.getSubjectDocuments(
-                HAS_LINK_TO, getPageAbsoluteLink(doc), doc.getSessionId());
-
-        String prefix = ctx.getModulePath();
-
-        for (DocumentModel d : l) {
-            Map<String, String> map = new HashMap<String, String>();
-            try {
-                map.put("title", d.getTitle());
-                map.put("href", prefix + "/" + d.getPath().removeFirstSegments(3).toString());
-                list.add(map);
-            } catch (ClientException e) {
-                e.printStackTrace();
-            }
-        }
-        return list;
-    }
-
-    public static String getPageAbsoluteLink(DocumentModel doc) {
-        String s = doc.getPath().removeFirstSegments(3).toString();
-        return "." + s.replace("/", ".");
     }
 
 }

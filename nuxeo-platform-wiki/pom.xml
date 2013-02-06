@@ -16,8 +16,9 @@
   </description>
 
   <modules>
-    <module>nuxeo-platform-wiki-webengine</module>
+    <module>nuxeo-platform-wiki-core</module>
     <module>nuxeo-platform-wiki-jsf</module>
+    <module>nuxeo-platform-wiki-webengine</module>
   </modules>
 
 </project>

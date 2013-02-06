@@ -34,17 +34,16 @@ import org.nuxeo.ecm.webengine.WebEngine;
 import org.nuxeo.ecm.webengine.model.Resource;
 import org.nuxeo.ecm.webengine.model.WebContext;
 
+import static org.nuxeo.ecm.wiki.rendering.WikiConstants.PAGE_LINK_PATTERN;
 
 public class WikiPageLinkResolver implements WikiFilter{
 
     private static final String LINK_CLASS_EXIST = "exist";
     private static final String LINK_CLASS_DONTEXISTS = "dontexists";
-    // TODO get this from config files
-    public static final String PATTERN = "(\\.)?([A-Z]+[a-z]+[A-Z][A-Za-z]*\\.)*([A-Z]+[a-z]+[A-Z][A-Za-z]*)";
-    public static final Pattern PAGE_LINK_PATTERN = Pattern.compile(PATTERN);
 
     static final String LINK_TEMPLATE = "<a  href=\"%s\" class=\"%s\">%s</a>";
 
+    @Override
     public String apply(String content) {
         Matcher m = PAGE_LINK_PATTERN.matcher(content);
         StringBuffer sb = new StringBuffer();
