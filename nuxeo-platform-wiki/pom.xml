@@ -10,6 +10,7 @@
   <artifactId>nuxeo-platform-wiki</artifactId>
   <name>Nuxeo Wiki feature</name>
   <packaging>pom</packaging>
+  <version>5.7-NXP-10939-SNAPSHOT</version>
 
   <description>
     Wiki implementation on top of Nuxeo EP

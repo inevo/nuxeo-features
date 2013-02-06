@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.nuxeo.ecm.platform</groupId>
     <artifactId>nuxeo-platform-wiki</artifactId>
-    <version>5.7-SNAPSHOT</version>
+    <version>5.7-NXP-10939-SNAPSHOT</version>
   </parent>
 
   <artifactId>nuxeo-platform-wiki-jsf</artifactId>
@@ -35,6 +35,7 @@
     <dependency>
       <groupId>org.nuxeo.ecm.platform</groupId>
       <artifactId>nuxeo-platform-wiki-core</artifactId>
+      <version>5.7-NXP-10939-SNAPSHOT</version>
     </dependency>
     
     <dependency>
