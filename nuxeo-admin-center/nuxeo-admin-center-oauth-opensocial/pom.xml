@@ -107,6 +107,24 @@
       <artifactId>hibernate-annotations</artifactId>
     </dependency>
 
+    <!-- OAUth2 libs -->
+    <dependency>
+      <groupId>com.google.http-client</groupId>
+      <artifactId>google-http-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.http-client</groupId>
+      <artifactId>google-http-client-jackson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.oauth-client</groupId>
+      <artifactId>google-oauth-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.api-client</groupId>
+      <artifactId>google-api-client</artifactId>
+    </dependency>
+
     <!-- scope test -->
     <dependency>
       <groupId>org.nuxeo.ecm.core</groupId>
