@@ -10,6 +10,7 @@
   <artifactId>nuxeo-admin-center-oauth-opensocial</artifactId>
   <name>Nuxeo Administration Center OAuth/Opensocial</name>
   <description>Admin screens for OAuth and OpenSocial</description>
+  <version>5.7-NXP-10905-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <dependencies>
