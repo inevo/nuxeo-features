@@ -43,7 +43,7 @@ import org.nuxeo.ecm.platform.rendering.wiki.extensions.PatternFilter;
 import org.nuxeo.ecm.platform.ui.web.api.NavigationContext;
 import org.wikimodel.wem.WikiParserException;
 
-@Name("wikiPreviewkActions")
+@Name("wikiPreviewActions")
 @Scope(CONVERSATION)
 public class WikiPreviewBean {
 

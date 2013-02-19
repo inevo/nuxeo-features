@@ -50,7 +50,6 @@
       <schema name="uid"/>
       <facet name="Versionable"/>
       <facet name="Publishable"/>
-      <facet name="Indexable"/>
       <facet name="Commentable"/>
       <facet name="Folderish"/>
     </doctype>
